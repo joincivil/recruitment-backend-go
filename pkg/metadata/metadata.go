@@ -1,12 +1,5 @@
 package metadata
 
-import (
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
-)
-
 const (
 	// SludgeName is the string that represents Sludge
 	SludgeName = "sludge"
@@ -39,42 +32,4 @@ type Metadata struct {
 	Conflicts string `json:"conflicts"`
 }
 
-// HTTPResponse represents the data format that wraps the metadata
-// revisions
-type HTTPResponse struct {
-	Name      string      `json:"name"`
-	Revisions []*Metadata `json:"revisions"`
-}
-
-// HTTPRetriever implements Retriever to fetch metadata
-// contents from an HTTP source
-type HTTPRetriever struct {
-}
-
-// Revisions returns the feed for a newsroom given the newsroom name
-func (r *HTTPRetriever) Revisions(newsroomName string) ([]*Metadata, error) {
-	client := http.Client{}
-
-	url, ok := revisionNameToURLs[newsroomName]
-	if !ok {
-		return nil, fmt.Errorf("newsroom not found")
-	}
-
-	resp, err := client.Get(url)
-	if err != nil {
-		return nil, err
-	}
-
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	revsResp := &HTTPResponse{}
-	err = json.Unmarshal(body, &revsResp)
-	if err != nil {
-		return nil, err
-	}
-
-	return revsResp.Revisions, nil
-}
+// TODO: Implement an HTTP retriever to retrieve the revision data

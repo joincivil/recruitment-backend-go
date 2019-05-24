@@ -30,6 +30,7 @@ We have included a `main.go` in `cmd/difftool` and in `cmd/api`.
 Anything outside these requirements is up to you to design and implement.
 
 * Please make use of the given scaffolding and stubs, but feel free to add any directories, files and additional libraries as needed. Use your favorite dependency manager to add libraries to the repository.
+* To ensure optimal performance, please implement the diff-ing algorithm yourself.
 * The charter revision data contains several fields which all need to be diff-ed.
 * Diffs only need to be calculated one way from older revision to newer revision.
 * A diff between two revisions must determine:
@@ -45,8 +46,10 @@ Anything outside these requirements is up to you to design and implement.
     * The diff data output must be a human readable JSON payload.
     * The diff data output must match the diff requirements above.
 
+Some suggested stubs that need implementation are marked by TODOs.
+
 ## How to submit your work
 
-1. Feel free to add any notes or things you would like us to know about in `NOTES.txt`
+1. Feel free to add any notes or things you would like us to know about in `NOTES.txt`. Optionally, leave any feedback on the project itself as we are always looking to improve our interview process.
 2. Zip or tar this entire directory into a file named `<your name>-<role applied for>.{zip|tar}`.
 3. Email the file to `codetest@joincivil.com` with the subject `<your name> - <role applied for>`.
